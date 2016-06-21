@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "static_pages/help.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe "static_pages/help.html.erb" do
+it "should have the content 'Help'" do
+      render
+      expect(rendered).to include('Help')
+    end
 end

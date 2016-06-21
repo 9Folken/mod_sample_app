@@ -18,9 +18,11 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory_girl_rails'
-  gem 'cucumber-rails'
-  gem 'database_cleaner'
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara', '2.2.0'
+  gem 'factory_girl_rails', '4.2.0'
+  gem 'cucumber-rails', '1.4.3', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 
   # Uncomment these lines on Linux.
   gem 'libnotify'
