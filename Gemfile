@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'pg', '0.15.1'
+gem 'pg', '0.18', :platform => :jruby, :git => 'git://github.com/headius/jruby-pg.git', :branch => :master
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bcrypt-ruby'
