@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails'
+gem 'pg', '0.15.1'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'bcrypt-ruby'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'pg'
+
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec-rails'
   # The following optional lines are part of the advanced setup.
   gem 'guard-rspec', '4.6.0'
