@@ -13,18 +13,8 @@
     <div class="container">
       <%= yield %>
       <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
       
-      <div class="row">
- <div class="col-sm-4">.col-sm-4</div>
- <div class="col-sm-4">.col-sm-4</div>
- <div class="col-sm-4">.col-sm-4</div> 
-</div>
-<p class="text-left">Равнение по левому краю</p>
-<p class="text-center">Текст по центру</p>
-<p class="text-right">Равнение по правому краю</p>
-<p class="text-justify">Равнение по обоим краям</p>
-<p class="text-nowrap">Текст без переносов</p>
-
     </div>
   </body>
 </html>
