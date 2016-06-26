@@ -4,12 +4,6 @@ GIT
   specs:
     database_cleaner (1.5.3)
 
-GIT
-  remote: git://github.com/headius/jruby-pg.git
-  revision: d7297060881976506fe4b53f402056309f2496f1
-  branch: master
-  specs:
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -155,6 +149,7 @@ GEM
     notiffany (0.1.0)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    pg (0.18.4)
     pkg-config (1.1.7)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -284,7 +279,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   libnotify
-  pg (= 0.18)!
+  pg
   rails
   rails_12factor (= 0.0.2)
   rspec-rails
