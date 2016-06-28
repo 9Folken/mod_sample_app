@@ -13,14 +13,14 @@ describe "User pages" do
     it { should have_title(user.name) }
   end
 
+      
+  
   describe "signup page" do
     before { visit signup_path }
 
     it { should have_content('Sign up') }
     it { should have_title(full_title('Sign up')) }
-  end
-
-  describe "signup page" do
+ 
 
     before { visit signup_path }
 
@@ -60,10 +60,9 @@ describe "User pages" do
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
       
-      describe "followed by signout" do
-        before { click_link "Sign out" }
-        it { should have_link('Sign in') }
-      end
+            
     end
+      
   end
+  
 end
