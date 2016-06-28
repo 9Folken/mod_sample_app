@@ -1,5 +1,5 @@
 Given /^a user visits the signin page$/ do
-  visit '/static_pages/home'
+  visit signin_path
 end
 
 When /^they submit invalid signin information$/ do

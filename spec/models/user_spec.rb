@@ -3,8 +3,9 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+    #@user = User.new(name: "Example User", email: "user@example.com",    password: "foobar", password_confirmation: "foobar")
+     #let(@user) { FactoryGirl.create(:user) }
+     @user = FactoryGirl.create(:user)
   end
 
   subject { @user }
@@ -14,10 +15,18 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  
 
   it { should be_valid }
-
+  
+  describe "remember token" do
+    # @user = User.new(name: "Example User", email: "user@example.com",    password: "foobar", password_confirmation: "foobar")
+    before { @user.save }
+    it { expect(@user.remember_token).not_to be_blank }
+  end 
+  
   describe "when name is not present" do
     before { @user.name = " " }
     it { should_not be_valid }
@@ -42,6 +51,7 @@ describe User do
   describe "when email format is valid" do
     it "should be valid" do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      
       addresses.each do |valid_address|
         @user.email = valid_address
         expect(@user).to be_valid
@@ -51,17 +61,24 @@ describe User do
 
   describe "when email address is already taken" do
     before do
-      user_with_same_email = @user.dup
-      user_with_same_email.email = @user.email.upcase
-      user_with_same_email.save
+        @user = User.new(name: "Example User", email: "user@example.com",    password: "foobar", password_confirmation: "foobar")
+        user_with_same_email =       @user.dup
+        user_with_same_email.email = @user.email.downcase
+#       @user = User.new(name: "Example User", email: "user@example.com", password: " ", password_confirmation: " ")
+        user_with_same_email.save
+#       #expect(user_with_same_email.email).to eq @user.email.downcase
+#       user_with_same_email.save
+      
+      
     end
-
+    it { should_not be_valid }
+  end
   describe "when password is not present" do
     before do
       @user = User.new(name: "Example User", email: "user@example.com",
                        password: " ", password_confirmation: " ")
-    end
-    it { should_not be_valid }
+    end	
+      it { should_not be_valid }
   end
 
   describe "when password doesn't match confirmation" do
@@ -69,10 +86,10 @@ describe User do
     it { should_not be_valid }
   end
 
-    it { should_not be_valid }
-  end
+  # it { should_not be_valid }
+  # end
 
-describe "with a password that's too short" do
+  describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
   end
@@ -92,5 +109,5 @@ describe "with a password that's too short" do
       specify { expect(user_for_invalid_password).to be_falsey }
     end
   end 
-
+  
 end
