@@ -23,4 +23,9 @@ class User < ActiveRecord::Base
   def create_remember_token
     self.remember_token = User.encrypt(User.new_remember_token)
   end
+  
+   def user_params
+      params.require(:user).permit(:name, :email, :password,
+                                   :password_confirmation)
+   end
 end
