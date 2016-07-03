@@ -9,6 +9,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'minitest'
+gem 'rspec-its'
 
 
 group :development, :test do
